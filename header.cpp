@@ -14,5 +14,5 @@ BinaryFileManager::~BinaryFileManager() noexcept {
 }
 
 std::string BinaryFileManager::ReadBitSequence(size_t size) const noexcept {
-
+    // use put and write? or is it for write func? 
 }
