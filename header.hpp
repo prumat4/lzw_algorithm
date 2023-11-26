@@ -5,17 +5,12 @@
 
 class BinaryFileManager {
 private:
-    std::fstream inputFile;
-    std::fstream outputFile;
+    std::string filePath;
 private:
-
+    size_t getNumberOfBytes(size_t size) const noexcept;
+    void isValidFile(const std::fstream& file) const;
 public:
     BinaryFileManager(const std::string &filePath) noexcept;
-    ~BinaryFileManager() noexcept;
-    
-    std::bitset<8> ReadByte() noexcept;
-    std::vector<std::bitset<8>> ReadBitSequence(size_t size) noexcept;
 
-    void WriteByte(const std::bitset<8>& bits) noexcept;
-    // void WriteBitSequence(const std::bitset<>& bits) noexcept;
+    std::vector<char>  ReadBitSequence(size_t size);    
 };

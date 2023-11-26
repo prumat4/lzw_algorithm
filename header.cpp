@@ -1,44 +1,31 @@
 #include "header.hpp"
 
-BinaryFileManager::BinaryFileManager(const std::string &filePath) noexcept 
-    : inputFile(filePath, std::ios::in | std::ios::binary), outputFile(filePath, std::ios::out | std::ios::binary) {
-    if(!inputFile || !outputFile)
-        std::cout << "Error while initializing the binary file '" << filePath << "'\n";
-    else 
-        std::cout << "File " << filePath << " succesfully initialized\n";
+BinaryFileManager::BinaryFileManager(const std::string &filePath) noexcept { 
+    this->filePath = filePath;
 }
 
-BinaryFileManager::~BinaryFileManager() noexcept {
-    inputFile.close();
-    std::cout << "Input file succesfully closed!\n";
+size_t BinaryFileManager::getNumberOfBytes(size_t size) const noexcept {
+    if(size % 8 == 0)
+        return size / 8;
+    
+    return (size / 8) + 1;
 }
 
-void BinaryFileManager::WriteByte(const std::bitset<8>& bits) noexcept {
-    uint8_t byte = bits.to_ulong();
-    outputFile.write(reinterpret_cast<char*>(&byte), sizeof(uint8_t));
-}
-
-std::bitset<8> BinaryFileManager::ReadByte() noexcept {
-    uint8_t byte {0};
-    inputFile.read(reinterpret_cast<char*>(&byte), sizeof(uint8_t));
-    std::bitset<8> ans(byte);
-    return ans; 
-}
-
-std::vector<std::bitset<8>> BinaryFileManager::ReadBitSequence(size_t size) noexcept {
-    std::vector<std::bitset<8>> bytes;
-
-    while (size > 0) {
-        std::bitset<8> bits;
-        uint8_t byte {0};
-
-        inputFile.read(reinterpret_cast<char*>(&byte), sizeof(uint8_t));
-
-        bits = byte;
-        bytes.push_back(bits);
-
-        size--;
+void BinaryFileManager::isValidFile(const std::fstream &file) const {
+    if(!file) {
+        std::runtime_error error("Error opening file!");
+        throw(error);
     }
+}
+
+std::vector<char> BinaryFileManager::ReadBitSequence(size_t size) {
+    std::fstream inputFile(filePath, std::ios::in | std::ios::binary);
+    isValidFile(inputFile);
+
+    size_t sizeInBytes = getNumberOfBytes(size);
+    std::vector<char> bytes(sizeInBytes);
+    inputFile.read(bytes.data(), sizeInBytes);
+    inputFile.close();
 
     return bytes;
 }
