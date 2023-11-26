@@ -18,6 +18,27 @@ void BinaryFileManager::WriteByte(const std::bitset<8>& bits) noexcept {
     outputFile.write(reinterpret_cast<char*>(&byte), sizeof(uint8_t));
 }
 
-std::string BinaryFileManager::ReadBitSequence(size_t size) const noexcept {
+std::bitset<8> BinaryFileManager::ReadByte() noexcept {
+    uint8_t byte {0};
+    inputFile.read(reinterpret_cast<char*>(&byte), sizeof(uint8_t));
+    std::bitset<8> ans(byte);
+    return ans; 
+}
 
+std::vector<std::bitset<8>> BinaryFileManager::ReadBitSequence(size_t size) noexcept {
+    std::vector<std::bitset<8>> bytes;
+
+    while (size > 0) {
+        std::bitset<8> bits;
+        uint8_t byte {0};
+
+        inputFile.read(reinterpret_cast<char*>(&byte), sizeof(uint8_t));
+
+        bits = byte;
+        bytes.push_back(bits);
+
+        size--;
+    }
+
+    return bytes;
 }
