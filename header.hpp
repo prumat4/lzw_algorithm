@@ -12,5 +12,6 @@ private:
 public:
     BinaryFileManager(const std::string &filePath) noexcept;
 
-    std::vector<char>  ReadBitSequence(size_t size);    
+    std::vector<char> ReadBitSequence(size_t size);    
+    void WriteBitSequence(const std::vector<char> &bits);
 };
