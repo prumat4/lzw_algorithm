@@ -1,10 +1,11 @@
 #include <iostream>
 #include <fstream>
+#include <bitset>
 
 class BinaryFileManager {
 private:
-    std::ifstream inputFile;
-    std::ofstream outputFile;
+    std::fstream inputFile;
+    std::fstream outputFile;
 private:
 
 public:
@@ -12,4 +13,5 @@ public:
     ~BinaryFileManager() noexcept;
 
     std::string ReadBitSequence(size_t size) const noexcept;
+    void WriteByte(const std::bitset<8>& bits) noexcept;
 };
