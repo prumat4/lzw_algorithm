@@ -3,6 +3,9 @@
 #include <bitset>
 #include <vector>
 
+#define INPUT_FLAGS std::ios::in | std::ios::binary | std::ios::app
+#define OUTPUT_FLAGS std::ios::out | std::ios::binary | std::ios::app
+
 class BinaryFileManager {
 private:
     std::string filePath;
