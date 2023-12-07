@@ -1,4 +1,4 @@
-#include "DataCompression.hpp"
+#include "ZivLempelAlgorithm.hpp"
 
 int main() {
     BinaryFileManager man("../file.dat");

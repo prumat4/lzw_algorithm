@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(Ziv-Lempel)
+project(ZLW-algorithm)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -10,5 +10,5 @@ add_executable(main
 )
 
 target_link_libraries(main
-DataCompression
+ZLW-algorithm
 )

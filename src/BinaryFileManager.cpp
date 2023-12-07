@@ -1,4 +1,4 @@
-#include "DataCompression.hpp"
+#include "BinaryFileManager.hpp"
 
 BinaryFileManager::BinaryFileManager(const std::string &filePath) noexcept { 
     this->filePath = filePath;

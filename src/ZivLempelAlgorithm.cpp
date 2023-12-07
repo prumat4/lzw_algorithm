@@ -1,0 +1,1 @@
+#include "ZivLempelAlgorithm.hpp"
