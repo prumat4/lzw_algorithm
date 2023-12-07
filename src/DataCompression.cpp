@@ -18,7 +18,7 @@ void BinaryFileManager::isValidFile(const std::fstream &file) const {
     }
 }
 
-std::vector<char> BinaryFileManager::ReadBitSequence(size_t size) {
+std::vector<char> BinaryFileManager::readBitSequence(size_t size) {
     std::fstream inputFile;
     inputFile.open(filePath, INPUT_FLAGS);
     isValidFile(inputFile);
@@ -31,12 +31,12 @@ std::vector<char> BinaryFileManager::ReadBitSequence(size_t size) {
     return bytes;
 }
 
-void BinaryFileManager::WriteBitSequence(const std::vector<char> &bits) {
+void BinaryFileManager::writeBytes(const std::vector<char> &bytes) {
     std::fstream outputFile;
     outputFile.open(filePath, OUTPUT_FLAGS);
     isValidFile(outputFile);
 
-    outputFile.write(bits.data(), bits.size());
+    outputFile.write(bytes.data(), bytes.size());
     
     outputFile.close();
 }
