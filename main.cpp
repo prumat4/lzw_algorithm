@@ -1,4 +1,4 @@
-#include "header.hpp"
+#include "DataCompression.hpp"
 
 int main() {
     BinaryFileManager man("file.dat");
