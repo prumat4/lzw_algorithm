@@ -1,6 +1,6 @@
 add_library(ZLW-algorithm
     BinaryFileManager.cpp
-    ZivLempelAlgorithm.cpp
+    ZivLempelWelchAlgorithm.cpp
 )
 
 target_include_directories(ZLW-algorithm
