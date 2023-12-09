@@ -12,7 +12,7 @@ int main() {
 
     LZW first;
     first.encode(5294, "../file.bin");
-    first.decode(2013, "../file_compressed.bin");
+    first.decode(1173, "../file_compressed.bin");
 
     return 0;
 }
