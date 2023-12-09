@@ -36,3 +36,13 @@ void BinaryFileManager::writeBytes(std::vector<int> &bytes, const std::string& f
     
     outputFile.close();
 }
+
+void BinaryFileManager::writeBytes(std::vector<char> &bytes, const std::string& filePath) {
+    std::fstream outputFile;
+    outputFile.open(filePath, OUTPUT_FLAGS);
+    isValidFile(outputFile);
+
+    outputFile.write(bytes.data(), bytes.size());
+    
+    outputFile.close();
+}

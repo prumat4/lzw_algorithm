@@ -14,5 +14,7 @@ private:
     void isValidFile(const std::fstream& file) const;
 public:
     std::vector<char> readBitSequence(size_t size, const std::string& filePath);
+
     void writeBytes(std::vector<int> &bytes, const std::string& filePath);
+    void writeBytes(std::vector<char> &bytes, const std::string& filePath);
 };
